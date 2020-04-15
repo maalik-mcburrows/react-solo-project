@@ -1,11 +1,18 @@
 import React, { Component } from 'react';
 import ArtistList from './components/ArtistList'
-// import SingleUser from './components/SingleUser';
+import ArtistContent from './components/ArtistContent';
 // // import RepoData from './components/repoData';
-// import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 
 class SearchMusic extends Component{
+
+  container = React.createRef();
+  artistImage = React.createRef();
+  media = React.createRef();
+  overlay = React.createRef();
+  searchElem = React.createRef();
+
   state = {
     artist: "",
     artistData: []
@@ -95,15 +102,16 @@ class SearchMusic extends Component{
           <h1>Artist Query</h1>
         </header>
         <form onSubmit={this.handleSubmit}>
-            <div className="container"></div>
-            <div className="artist"></div>
-            <input onChange={this.handleChange} value={this.state.artist} autoCorrect="off" autoCapitalize="off" spellCheck="false" id="search" placeholder="Artist..." type="text" />
+            <div className="container" ref={this.container}></div>
+            <div className="artist" ref={this.artistImage}></div>
+            <input ref={this.searchElem} onChange={this.handleChange} value={this.state.artist} autoCorrect="off" autoCapitalize="off" spellCheck="false" id="search" placeholder="Artist..." type="text" />
             <input type="submit" value="GO!" />
-            <div className="overlay"></div>
-            <div className="media hidden"></div>
+            <div ref={this.overlay} className="overlay"></div>
+            <div ref={this.media} className="media hidden"></div>
         </form>
         {<Router>
           <Route path="/" exact render={(props) => <ArtistList{...props} artistData={ artistData }/>} />
+          <Route path="/artist" component={ArtistContent} />
         </Router>}
       </div>
     )

@@ -12,10 +12,10 @@ const ArtistList = props => {
                 </li>
                 ))
             ) : (
-                <li>No Data</li>
+                <li>No Tunes :(</li>
             )}
         </ul>
-    );
+    ).join('');
 }
 
 export default ArtistList;
