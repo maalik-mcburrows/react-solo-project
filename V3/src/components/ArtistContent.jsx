@@ -1,10 +1,15 @@
 import React from 'react';
 
 const ArtistContent = props => {
-    const { data } = props;
+    const { artistData } = props;
 
     return(
-        <div style={`background-image: url(${data.artworkUrl100})`} onClick={`openMedia('${data.previewUrl}', '${data.trackCencoredName}')`} className='result'></div>
+        <div onClick={artistData.previewUrl} className='result'>
+            <img alt='Artist Pic' src={artistData.artworkUrl100}></img>
+            <p>{artistData.artistName}</p>
+            <p>{artistData.trackName}</p>
+            <p>{artistData.collectionName}</p>
+        </div>
     );
 };
 
