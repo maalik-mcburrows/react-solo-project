@@ -7,7 +7,6 @@ import './App.css';
 class SearchMusic extends Component{
 
   artistImage = React.createRef();
-  media = React.createRef();
   overlay = React.createRef();
   searchElem = React.createRef();
 
@@ -58,7 +57,6 @@ class SearchMusic extends Component{
             <input ref={this.searchElem} onChange={this.handleChange} value={this.state.artist} autoCorrect="off" autoCapitalize="off" spellCheck="false" id="search" placeholder="Artist..." type="text" />
             <input type="submit" value="GO!" />
             <div ref={this.overlay} className="overlay"></div>
-            <div ref={this.media} className="media hidden"></div>
         </form>
         <Router>
           <Route path="/" ref={ this.container } exact render={(props) => <ArtistList{...props} artistData={ artistData }/>} />
