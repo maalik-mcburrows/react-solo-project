@@ -13,11 +13,22 @@
 
 .playPauseButt {
   color: white;
+  display: -webkit-inline-box;
+  padding-right: 20px;
+}
+
+.trackName {
+  display: -webkit-inline-box;
 }
 
 .musicInfo {
   display: flow-root;
-  padding-left: 55px;
+  padding-left: 35px;
+  padding: 10px;
+}
+
+.songListItem{
+  display: -webkit-inline-box;
 }
 
 .result {

@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import PlayPauseButt from './playPauseButt';
 
 class AlbumContent extends Component {
     state = {
         songs: []
     }
+
     // console.log(this.props)
 
     loadUser = async () => {
@@ -19,27 +21,9 @@ class AlbumContent extends Component {
         this.setState({ 
            songs : songData 
         })
+        // const id = this.state.songs.id
         console.log('Songs are: ', this.state.songs)
-        console.log('Song snippet: ', this.state.songs.previewUrl);
-    }
-
-    
-
-    playButtToggle = () => {
-        const { songs } = this.state;
-        let audio = new Audio(songs.previewUrl)
-        let playing = false
-        // let buttStatus = 'PLAY'
-
-        if (playing) {
-            playing = false
-            audio.pause()
-            // buttStatus = 'PLAY'
-        } else {
-            playing = true
-            audio.play()
-            // buttStatus = 'PAUSE'
-        }
+        console.log('Song snippet: ', this.state.songs.map(snippet => snippet.previewUrl));
     }
 
 
@@ -62,12 +46,12 @@ class AlbumContent extends Component {
                         </div>
                     </div>    
                     ))}
-                    {songs.length > 0 ? ( songs.map(track => (
-                        <li className="trackList" key={track.id}> 
+                    {songs.length > 0 ? ( songs.slice(1).map(track => (
+                        <li className="trackList" key={track.id}>
                             <div className="musicInfo">
-                                <p>{track.trackName}</p>
+                                <PlayPauseButt songs={track}/> 
+                                <p className="trackName">{track.trackName}</p>
                             </div>
-                            <button className="playPauseButt" onClick={this.playButtToggle}>PLAY</button> 
                         </li>
                         ))
                     ) : (

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const SingleAlbum = props => {
     const { albumData } = props;
-    console.log(albumData);
+    console.log('ALBUM DATA: ', albumData);
     return(
         <div>
             <div className='result'>
