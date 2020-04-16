@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const AlbumContent = props => {
+const SingleAlbum = props => {
     const { albumData } = props;
     // let audio = new Audio(albumData.previewUrl)
     // let playing = false
@@ -32,7 +32,7 @@ const AlbumContent = props => {
                     <p>{albumData.collectionName}</p>
                     <p>({albumData.contentAdvisoryRating})</p>
                 </div>
-                <Link albumData={albumData} to={`/lookup?id=${albumData.collectionId}&entity=song&media=music`}>View this Entry</Link>
+                <Link to={`/songs/${albumData.collectionId}`}>View this Album</Link>
                 {/* <button onClick={playButtToggle}>{buttStatus}</button> */}
             </div>
         </div>
@@ -40,4 +40,4 @@ const AlbumContent = props => {
     );
 };
 
-export default AlbumContent;
+export default SingleAlbum;

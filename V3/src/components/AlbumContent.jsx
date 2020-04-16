@@ -2,14 +2,15 @@ import React, { Component } from 'react';
 
 class AlbumContent extends Component {
     state = {
-        songs: " "
+        songs: []
     }
     // console.log(this.props)
 
     loadUser = async () => {
-        const { albumId } = this.props.collectionId;
-        const response = await fetch(`https://itunes.apple.com/lookup?id=${albumId}&entity=song&media=music`);
-        const data = await response.json();
+        const { albumId } = this.props.match.params;
+        const url = await fetch(`https://itunes.apple.com/lookup?id=${albumId}&entity=song&media=music`);
+        const response = await url.json();
+        const data = response.results;
         return data; 
     }
 
@@ -18,16 +19,13 @@ class AlbumContent extends Component {
         this.setState({ 
            songs : songData 
         })
+        console.log('Songs are: ', this.state.songs)
     }
     render() {
         console.log('Ayee these the props: ', this.props)
-        // const { user } = this.state;
+        const { songs } = this.state;
         return(
             <div>
-                {/* <h2>{user.login}</h2>
-                <img src={user.avatar_url} alt="User Pic"></img>
-                <br></br>
-                <a href={`/users/${user.login}/repos`} target="_blank" rel="noopener noreferrer" key={user.id}>Click Here to View Repos</a> */}
                 <p>Yoooo</p>
             </div>
         )

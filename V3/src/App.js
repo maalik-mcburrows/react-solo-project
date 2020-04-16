@@ -62,8 +62,8 @@ function SearchMusic() {
       <Router>
         <Switch>
           <Route exact path="/" component={AlbumList}/>
-          <Route path="/artist" component={SingleAlbum} />
-          <Route path="/lookup?id=:albumId?&entity=song&media=music" component={AlbumContent} />
+          <Route path="/albums" component={SingleAlbum} />
+          <Route path="/songs/:albumId?" component={AlbumContent} />
         </Switch>
       </Router>
     </div>
