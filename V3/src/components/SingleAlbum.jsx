@@ -3,25 +3,7 @@ import { Link } from 'react-router-dom';
 
 const SingleAlbum = props => {
     const { albumData } = props;
-    // let audio = new Audio(albumData.previewUrl)
-    // let playing = false
-    // let buttStatus = 'PLAY'
-
-    // Dont really need next line:
-    // const media = React.createRef();
-
-    // const playButtToggle = () => {
-        
-    //     if (playing) {
-    //         playing = false
-    //         audio.pause()
-    //     } else {
-    //         playing = true
-    //         audio.play()
-    //         buttStatus = 'PAUSE'
-    //     }
-    // }
-
+    console.log(albumData);
     return(
         <div>
             <div className='result'>

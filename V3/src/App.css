@@ -30,6 +30,27 @@
   padding: 30px;
 }
 
+.artAndInfo {
+  display: -webkit-inline-box;
+  padding: 50px;
+}
+
+.art {
+  margin: auto;
+  padding-right: 25px;
+}
+
+.info {
+  margin: auto;
+  text-align: center;
+  padding-left: 25px;
+}
+
+.trackList {
+  text-align: start;
+  list-style-type: none;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
