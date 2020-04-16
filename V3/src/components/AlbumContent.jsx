@@ -1,35 +1,37 @@
 import React, { Component } from 'react';
 
-class SingleUser extends Component {
+class AlbumContent extends Component {
     state = {
-        user: " "
+        songs: " "
     }
+    // console.log(this.props)
 
     loadUser = async () => {
-        const { albumId } = this.props.match.params;
-        const response = await fetch(`https://itunes.apple.com/lookup?id=${albumId}&entity=song`);
+        const { albumId } = this.props.collectionId;
+        const response = await fetch(`https://itunes.apple.com/lookup?id=${albumId}&entity=song&media=music`);
         const data = await response.json();
         return data; 
     }
 
     componentDidMount = async () => {
-        const userData = await this.loadUser();
+        const songData = await this.loadUser();
         this.setState({ 
-           user : userData 
+           songs : songData 
         })
     }
-
     render() {
-        const { user } = this.state;
+        console.log('Ayee these the props: ', this.props)
+        // const { user } = this.state;
         return(
             <div>
-                <h2>{user.login}</h2>
+                {/* <h2>{user.login}</h2>
                 <img src={user.avatar_url} alt="User Pic"></img>
                 <br></br>
-                <a href={`/users/${user.login}/repos`} target="_blank" rel="noopener noreferrer" key={user.id}>Click Here to View Repos</a>
+                <a href={`/users/${user.login}/repos`} target="_blank" rel="noopener noreferrer" key={user.id}>Click Here to View Repos</a> */}
+                <p>Yoooo</p>
             </div>
         )
     }
 };
 
-export default SingleUser;
+export default AlbumContent;

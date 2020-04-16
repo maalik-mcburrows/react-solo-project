@@ -1,8 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const AlbumContent = props => {
-    const { artistData } = props;
-    // let audio = new Audio(artistData.previewUrl)
+    const { albumData } = props;
+    // let audio = new Audio(albumData.previewUrl)
     // let playing = false
     // let buttStatus = 'PLAY'
 
@@ -24,12 +25,14 @@ const AlbumContent = props => {
     return(
         <div>
             <div className='result'>
-                <img alt='Artist Pic' src={artistData.artworkUrl100}></img>
+                <img alt='album Pic' src={albumData.artworkUrl100}></img>
                 <div className='musicInfo'>
-                    <p>{artistData.artistName}</p>
-                    {/* <p>{artistData.trackName}</p> */}
-                    <p>{artistData.collectionName}</p>
+                    <p>{albumData.albumName}</p>
+                    {/* <p>{albumData.trackName}</p> */}
+                    <p>{albumData.collectionName}</p>
+                    <p>({albumData.contentAdvisoryRating})</p>
                 </div>
+                <Link albumData={albumData} to={`/lookup?id=${albumData.collectionId}&entity=song&media=music`}>View this Entry</Link>
                 {/* <button onClick={playButtToggle}>{buttStatus}</button> */}
             </div>
         </div>
