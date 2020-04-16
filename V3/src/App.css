@@ -7,12 +7,23 @@
   font: 14px;
 }
 
+.listItem {
+  list-style-type: none;
+}
+
+.musicInfo {
+  display: flow-root;
+  padding-left: 55px;
+}
+
 .result {
   width: 150px;
   height: 125px;
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
+  display: -webkit-box;
+  padding: 30px;
 }
 
 .App-logo {

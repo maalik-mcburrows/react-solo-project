@@ -22,13 +22,14 @@ class SearchMusic extends Component{
     const url = await fetch(`https://itunes.apple.com/search?term=${artistName}&media=music`);
     // const params = { term: search, media: 'music' };
     // url.search = new URLSearchParams(params);
-    const data = await url.json();
-    console.log('Data from log on line 26: ', data.results);
+    const response = await url.json();
+    const data = response.results;
+    console.log('Data from log on line 26: ', data);
     this.setState({
       artist: "",
-      artistData: [data.results]
+      artistData: data
     })
-    console.log('Hey bro this is the artist data: ', this.state.artistData[0]);
+    console.log('Hey bro this is the artist data: ', this.state.artistData);
     return data;
   }
 

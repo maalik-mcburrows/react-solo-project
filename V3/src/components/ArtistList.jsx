@@ -9,7 +9,7 @@ const ArtistList = props => {
         <div className="container" ref={container}>
             <ul>
                 {artistData.length > 0 ? ( artistData.map(data => (
-                    <li key={data.id}> 
+                    <li className='listItem' key={data.id}> 
                         <ArtistContent artistData={data} /> 
                     </li>
                     ))
