@@ -6,8 +6,8 @@ class SingleUser extends Component {
     }
 
     loadUser = async () => {
-        const { username } = this.props.match.params;
-        const response = await fetch(`https://api.github.com/users/${username}`);
+        const { albumId } = this.props.match.params;
+        const response = await fetch(`https://itunes.apple.com/lookup?id=${albumId}&entity=song`);
         const data = await response.json();
         return data; 
     }

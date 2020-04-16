@@ -1,5 +1,5 @@
 import React from 'react';
-import ArtistContent from './ArtistContent';
+import SingleAlbum from './SingleAlbum';
 
 const ArtistList = props => {
     console.log(props)
@@ -10,7 +10,7 @@ const ArtistList = props => {
             <ul>
                 {artistData.length > 0 ? ( artistData.map(data => (
                     <li className='listItem' key={data.id}> 
-                        <ArtistContent artistData={data} /> 
+                        <SingleAlbum artistData={data} /> 
                     </li>
                     ))
                 ) : (

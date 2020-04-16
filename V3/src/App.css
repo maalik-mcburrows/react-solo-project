@@ -11,6 +11,10 @@
   list-style-type: none;
 }
 
+.playPauseButt {
+  color: white;
+}
+
 .musicInfo {
   display: flow-root;
   padding-left: 55px;

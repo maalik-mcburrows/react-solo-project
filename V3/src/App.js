@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import ArtistList from './components/ArtistList'
-import ArtistContent from './components/ArtistContent';
+import AlbumList from './components/AlbumList'
+import SingleAlbum from './components/SingleAlbum';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 
@@ -17,8 +17,8 @@ class SearchMusic extends Component{
 
   handleSubmit = async (e, search) => {
     e.preventDefault();
-    const artistName = this.state.artist;
-    const url = await fetch(`https://itunes.apple.com/search?term=${artistName}&media=music`);
+    const albumName = this.state.artist;
+    const url = await fetch(`https://itunes.apple.com/search?term=${albumName}&entity=album`);
     // const params = { term: search, media: 'music' };
     // url.search = new URLSearchParams(params);
     const response = await url.json();
@@ -59,8 +59,8 @@ class SearchMusic extends Component{
             <div ref={this.overlay} className="overlay"></div>
         </form>
         <Router>
-          <Route path="/" ref={ this.container } exact render={(props) => <ArtistList{...props} artistData={ artistData }/>} />
-          <Route path="/artist" component={ArtistContent} />
+          <Route path="/" ref={ this.container } exact render={(props) => <AlbumList{...props} artistData={ artistData }/>} />
+          <Route path="/artist" component={SingleAlbum} />
         </Router>
       </div>
     )
