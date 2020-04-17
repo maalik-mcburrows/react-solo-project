@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PlayPauseButt from './playPauseButt';
-
+import ListGroup from 'react-bootstrap/ListGroup';
+import Card from 'react-bootstrap/Card'
 class AlbumContent extends Component {
     state = {
         songs: []
@@ -35,25 +36,29 @@ class AlbumContent extends Component {
         console.log('SINGLE: ', single)
         return(
             <div>
-                <div>
+                <div style={{backgroundColor: "#262626", color: "#ff073a" }}>
                     {single.map(single => (
                     <div className="artAndInfo">
                         <div className="art">
-                            <img alt="album Pic" src={single.artworkUrl100}></img>
+                            <img style={{width:"150%"}} className="albumCover" alt="album Pic" src={single.artworkUrl100}></img>
                         </div>
-                        <div className="info">
-                            <p>{single.artistName}</p>
-                            <p>{single.collectionName} ({single.contentAdvisoryRating})</p>
+                        <div style={{marginLeft: "100px"}} className="info">
+                            <h1>{single.collectionName} ({single.contentAdvisoryRating})</h1>
+                            <h2>{single.artistName}</h2>
                         </div>
                     </div>    
                     ))}
                     {songs.length > 0 ? ( songs.slice(1).map(track => (
-                        <li className="trackList" key={track.id}>
-                            <div className="musicInfo">
-                                <PlayPauseButt onSend={playButtToggle} songs={track}/> 
-                                <p className="trackName">{track.trackName}</p>
-                            </div>
-                        </li>
+                        <Card className="trackList" style={{width:"100vw", backgroundColor: "#262626", borderBottomColor: "#ff073a", borderTopColor: "#ff073a",color: "#ff073a", display: "inline-block"}}>
+                            <ListGroup className="musicInfo" variant="flush">
+                                <ListGroup.Item style={{backgroundColor: "#262626"}}>
+                                    <PlayPauseButt style={{color: "#ff073a", display: "inline-block"}} onSend={playButtToggle} songs={track}/>
+                                    <div style={{display: "inline-block", paddingLeft: "20px"}}>
+                                        <b>{track.trackName}</b>
+                                    </div>
+                                </ListGroup.Item>
+                            </ListGroup>
+                        </Card>
                         ))
                     ) : (
                         <li>No Tunes!</li>
@@ -65,3 +70,7 @@ class AlbumContent extends Component {
 };
 
 export default AlbumContent;
+
+
+
+

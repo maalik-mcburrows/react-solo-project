@@ -37,29 +37,34 @@ class AlbumList extends Component {
     render() {
         const { albumData } = this.state;
         return(
-            <>
-                <form onSubmit={this.handleSubmit}>
-                    {/* <div className="album" ref={this.albumImage}></div> */}
-                    <input onChange={this.handleChange} value={this.state.album} autoCorrect="off" autoCapitalize="off" spellCheck="false" id="search" placeholder="Album Name" type="text" />
-                    <input type="submit" value="GO!" />
-                    {/* <div ref={this.overlay} className="overlay"></div> */}
-                </form>
-                <div className="container">
-                    <ul>
-                        {albumData.length > 0 ? ( albumData.map(data => (
+            <div>
+                <header style={{backgroundColor: "#262626", color: "#ff073a"}} className="App-header">
+                    <h1 style={{padding: "20px"}}>Album Query</h1>
+                    <form style={{paddingBottom: "25px"}} onSubmit={this.handleSubmit}>
+                        {/* <div className="album" ref={this.albumImage}></div> */}
+                        <input style={{color: "#ff073a"}} onChange={this.handleChange} value={this.state.album} autoCorrect="off" autoCapitalize="off" spellCheck="false" id="search" placeholder="Album Name" type="text" />
+                        <input style={{color: "#ff073a", backgroundColor: "#262626"}} type="submit" value="GO!" />
+                        {/* <div ref={this.overlay} className="overlay"></div> */}
+                    </form>
+                </header>
+                    <ul style={{paddingLeft: "0"}}>
+                        {( albumData.map(data => (
                             <li className='listItem' key={data.id}> 
                                 <SingleAlbum albumData={data} /> 
                             </li>
                             ))
-                        ) : (
-                            <li>No Tunes!</li>
-                        )}
+                        )} 
                     </ul>
-                </div>
-            </>
+            </div>
         );
     }
     
 }
 
 export default AlbumList;
+
+
+{/* <Jumbotron>
+  <h1>Album Query</h1>
+  <Form.Control onSubmit={this.handleSubmit} size="lg" onChange={this.handleChange} value={this.state.album} autoCorrect="off" autoCapitalize="off" spellCheck="false" id="search" placeholder="Album Name" type="text"/><Button type="submit" value="GO!" variant="primary">Learn more</Button>
+</Jumbotron> */}

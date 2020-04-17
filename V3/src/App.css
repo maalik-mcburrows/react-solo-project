@@ -11,9 +11,21 @@
   list-style-type: none;
 }
 
-.playPauseButt {
-  color: white;
+.container {
+  max-width: 100vw;
+}
+
+.albumCover {
+  border-radius: 15%;
+}
+
+.btn-lg {
+  background-color: #ff073a;
   display: -webkit-inline-box;
+  padding-right: 20px;
+}
+
+.btn-group-lg>.btn, .btn-lg {
   padding-right: 20px;
 }
 
@@ -46,6 +58,9 @@
   padding: 50px;
 }
 
+.btn-info {
+  background-color: rgb(255,7,58);
+}
 .art {
   margin: auto;
   padding-right: 25px;
@@ -60,6 +75,19 @@
 .trackList {
   text-align: start;
   list-style-type: none;
+  background-color: black;
+  border-bottom-color: white;
+
+}
+
+.trackList .card {
+  background-color: black;
+  border-bottom-color: white;
+  display: inline-block;
+}
+
+.list-group-item {
+  background-color: black;
 }
 
 .App-logo {

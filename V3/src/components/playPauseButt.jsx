@@ -5,7 +5,7 @@ const PlayPauseButt = props => {
     const { songs } = props;
     let audio = new Audio(songs.previewUrl)
     let playing = false
-
+    // let buttStatus = 'PLAY'
     const playButtToggle = () => {
 
         if (playing) {
@@ -20,8 +20,11 @@ const PlayPauseButt = props => {
         console.log('Toggle value: ', playing)
     }
     return (
-        <button type="button" data-testid="playPauseButt" className="playPauseButt" value={playing} props={props} onClick={playButtToggle}>PLAY</button>
-    )
+<button type="button" data-testid="playPauseButt" value={playing} onClick={playButtToggle} style={{backgroundColor: "black", display: "inline-block", borderColor: "rgb(255, 7, 58)"}} className="btn btn-info btn-lg">
+          <span class="glyphicon glyphicon-play"></span>
+        </button> 
+           )
 }
 
 export default PlayPauseButt
+
