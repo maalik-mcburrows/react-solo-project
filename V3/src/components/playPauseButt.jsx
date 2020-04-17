@@ -1,4 +1,5 @@
 import React from 'react'
+// import { render } from '@testing-library/react';
 
 const PlayPauseButt = props => {
     const { songs } = props;
@@ -16,9 +17,10 @@ const PlayPauseButt = props => {
             audio.play()
             // buttStatus = 'PAUSE'
         }
+        console.log('Toggle value: ', playing)
     }
     return (
-        <button className="playPauseButt" onClick={playButtToggle}>PLAY</button>
+        <button type="button" data-testid="playPauseButt" className="playPauseButt" value={playing} props={props} onClick={playButtToggle}>PLAY</button>
     )
 }
 

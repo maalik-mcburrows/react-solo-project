@@ -29,6 +29,7 @@ class AlbumContent extends Component {
 
     render() {
         console.log('Ayee these the props: ', this.props)
+        const playButtToggle = switchBool => {}
         const { songs } = this.state;
         const single = songs.slice(0,1);
         console.log('SINGLE: ', single)
@@ -49,7 +50,7 @@ class AlbumContent extends Component {
                     {songs.length > 0 ? ( songs.slice(1).map(track => (
                         <li className="trackList" key={track.id}>
                             <div className="musicInfo">
-                                <PlayPauseButt songs={track}/> 
+                                <PlayPauseButt onSend={playButtToggle} songs={track}/> 
                                 <p className="trackName">{track.trackName}</p>
                             </div>
                         </li>
