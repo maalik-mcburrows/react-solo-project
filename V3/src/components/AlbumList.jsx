@@ -64,7 +64,3 @@ class AlbumList extends Component {
 export default AlbumList;
 
 
-{/* <Jumbotron>
-  <h1>Album Query</h1>
-  <Form.Control onSubmit={this.handleSubmit} size="lg" onChange={this.handleChange} value={this.state.album} autoCorrect="off" autoCapitalize="off" spellCheck="false" id="search" placeholder="Album Name" type="text"/><Button type="submit" value="GO!" variant="primary">Learn more</Button>
-</Jumbotron> */}

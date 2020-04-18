@@ -4,10 +4,27 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import Card from 'react-bootstrap/Card'
 class AlbumContent extends Component {
     state = {
-        songs: []
+        songs: [],
+        playing: false
     }
 
-    // console.log(this.props)
+    playButtToggle = () => {
+        let songs = this.state.songs;
+        let playing = this.state.playing
+        let audio = new Audio(songs.previewUrl)
+        if (playing) {
+            this.setState({
+                playing: false
+            })
+            audio.pause()
+        } else {
+            this.setState({
+                playing: true
+            })
+            audio.play()
+        }
+        console.log('Toggle value: ', playing, this.state.songs)
+    }
 
     loadUser = async () => {
         const { albumId } = this.props.match.params;
@@ -22,7 +39,6 @@ class AlbumContent extends Component {
         this.setState({ 
            songs : songData 
         })
-        // const id = this.state.songs.id
         console.log('Songs are: ', this.state.songs)
         console.log('Song snippet: ', this.state.songs.map(snippet => snippet.previewUrl));
     }
@@ -30,10 +46,9 @@ class AlbumContent extends Component {
 
     render() {
         console.log('Ayee these the props: ', this.props)
-        const playButtToggle = switchBool => {}
+        // const playButtToggle = switchBool => {}
         const { songs } = this.state;
         const single = songs.slice(0,1);
-        console.log('SINGLE: ', single)
         return(
             <div>
                 <div style={{backgroundColor: "#262626", color: "#ff073a" }}>
@@ -48,11 +63,12 @@ class AlbumContent extends Component {
                         </div>
                     </div>    
                     ))}
-                    {songs.length > 0 ? ( songs.slice(1).map(track => (
+                    {songs.length > 0 ? ( songs.slice(1).map((track, index) => (
                         <Card className="trackList" style={{width:"100vw", backgroundColor: "#262626", borderBottomColor: "#ff073a", borderTopColor: "#ff073a",color: "#ff073a", display: "inline-block"}}>
                             <ListGroup className="musicInfo" variant="flush">
                                 <ListGroup.Item style={{backgroundColor: "#262626"}}>
-                                    <PlayPauseButt style={{color: "#ff073a", display: "inline-block"}} onSend={playButtToggle} songs={track}/>
+                                    <p>{index}</p>
+                                    <PlayPauseButt playButtToggle={this.playButtToggle} songs={track.previewUrl} style={{color: "#ff073a", display: "inline-block"}} />
                                     <div style={{display: "inline-block", paddingLeft: "20px"}}>
                                         <b>{track.trackName}</b>
                                     </div>

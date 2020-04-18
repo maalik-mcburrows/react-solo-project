@@ -33,9 +33,8 @@
 
 import React from 'react';
 import Adapter from 'enzyme-adapter-react-16';
-import Enzyme,{ simulate, shallow } from 'enzyme';
+import Enzyme,{ mount, shallow } from 'enzyme';
 import PlayPauseButt from '../components/playPauseButt';
-import jest from 'jest';
 Enzyme.configure({ adapter: new Adapter() });
 
 // it('should call mock function when the button is clicked', () => {
@@ -51,18 +50,18 @@ Enzyme.configure({ adapter: new Adapter() });
 // })
 
 const mockProps = {
-    previewUrl: "hello"
+    songs: {
+        previewUrl: "hello"
+    }
 }
 afterEach(() => {
     jest.clearAllMocks();
 })
 it('should call mock function when the button is clicked', () => {
-    // const dummyFxn = jest.fn();
-    const wrapper = shallow(<PlayPauseButt songs={mockProps} />
-    );
-    const handleplayButtonToggleSpy = jest.spyOn(wrapper.instance(), "playButtToggle");
-    const button = toggle.find('button')
-    button.simulate('click')
-    expect(handleplayButtonToggleSpy).toHaveBeenCalled();
+    const dummyFxn = jest.fn();
+    const wrapper = shallow((<PlayPauseButt playButtToggle={dummyFxn} {...mockProps} />
+    ));
+    wrapper.find('button').simulate('click')
+    expect(dummyFxn.mock.calls.length).toEqual(1);
 })
 
