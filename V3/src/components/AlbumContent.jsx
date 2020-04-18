@@ -1,30 +1,31 @@
 import React, { Component } from 'react';
-import PlayPauseButt from './playPauseButt';
+// import PlayPauseButt from './playPauseButt';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Card from 'react-bootstrap/Card'
+import ToggleButtFxn from './toggleButtFxn';
 class AlbumContent extends Component {
     state = {
         songs: [],
-        playing: false
+        // playing: false
     }
 
-    playButtToggle = () => {
-        let songs = this.state.songs;
-        let playing = this.state.playing
-        let audio = new Audio(songs.previewUrl)
-        if (playing) {
-            this.setState({
-                playing: false
-            })
-            audio.pause()
-        } else {
-            this.setState({
-                playing: true
-            })
-            audio.play()
-        }
-        console.log('Toggle value: ', playing, this.state.songs)
-    }
+    // playButtToggle = () => {
+    //     let songs = this.state.songs;
+    //     let playing = this.state.playing
+    //     let audio = new Audio(songs.previewUrl)
+    //     if (playing) {
+    //         this.setState({
+    //             playing: false
+    //         })
+    //         audio.pause()
+    //     } else {
+    //         this.setState({
+    //             playing: true
+    //         })
+    //         audio.play()
+    //     }
+    //     console.log('Toggle value: ', playing, this.state.songs)
+    // }
 
     loadUser = async () => {
         const { albumId } = this.props.match.params;
@@ -52,8 +53,8 @@ class AlbumContent extends Component {
         return(
             <div>
                 <div style={{backgroundColor: "#262626", color: "#ff073a" }}>
-                    {single.map(single => (
-                    <div className="artAndInfo">
+                    {single.map((single, index) => (
+                    <div key={index} className="artAndInfo">
                         <div className="art">
                             <img style={{width:"150%"}} className="albumCover" alt="album Pic" src={single.artworkUrl100}></img>
                         </div>
@@ -64,11 +65,11 @@ class AlbumContent extends Component {
                     </div>    
                     ))}
                     {songs.length > 0 ? ( songs.slice(1).map((track, index) => (
-                        <Card className="trackList" style={{width:"100vw", backgroundColor: "#262626", borderBottomColor: "#ff073a", borderTopColor: "#ff073a",color: "#ff073a", display: "inline-block"}}>
+                        <Card key={index} className="trackList" style={{width:"100vw", backgroundColor: "#262626", borderBottomColor: "#ff073a", borderTopColor: "#ff073a",color: "#ff073a", display: "inline-block"}}>
                             <ListGroup className="musicInfo" variant="flush">
-                                <ListGroup.Item style={{backgroundColor: "#262626"}}>
+                                <ListGroup.Item songs={track.previewUrl} style={{backgroundColor: "#262626"}}>
                                     <p>{index}</p>
-                                    <PlayPauseButt playButtToggle={this.playButtToggle} songs={track.previewUrl} style={{color: "#ff073a", display: "inline-block"}} />
+                                    <ToggleButtFxn key={index} style={{color: "#ff073a", display: "inline-block"}} />
                                     <div style={{display: "inline-block", paddingLeft: "20px"}}>
                                         <b>{track.trackName}</b>
                                     </div>
