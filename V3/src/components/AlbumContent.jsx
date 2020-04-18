@@ -6,26 +6,7 @@ import ToggleButtFxn from './toggleButtFxn';
 class AlbumContent extends Component {
     state = {
         songs: [],
-        // playing: false
     }
-
-    // playButtToggle = () => {
-    //     let songs = this.state.songs;
-    //     let playing = this.state.playing
-    //     let audio = new Audio(songs.previewUrl)
-    //     if (playing) {
-    //         this.setState({
-    //             playing: false
-    //         })
-    //         audio.pause()
-    //     } else {
-    //         this.setState({
-    //             playing: true
-    //         })
-    //         audio.play()
-    //     }
-    //     console.log('Toggle value: ', playing, this.state.songs)
-    // }
 
     loadUser = async () => {
         const { albumId } = this.props.match.params;
@@ -47,7 +28,6 @@ class AlbumContent extends Component {
 
     render() {
         console.log('Ayee these the props: ', this.props)
-        // const playButtToggle = switchBool => {}
         const { songs } = this.state;
         const single = songs.slice(0,1);
         return(
@@ -69,7 +49,7 @@ class AlbumContent extends Component {
                             <ListGroup className="musicInfo" variant="flush">
                                 <ListGroup.Item songs={track.previewUrl} style={{backgroundColor: "#262626"}}>
                                     <p>{index}</p>
-                                    <ToggleButtFxn key={index} style={{color: "#ff073a", display: "inline-block"}} />
+                                    <ToggleButtFxn key={index} songs={track.previewUrl} style={{color: "#ff073a", display: "inline-block"}} />
                                     <div style={{display: "inline-block", paddingLeft: "20px"}}>
                                         <b>{track.trackName}</b>
                                     </div>
