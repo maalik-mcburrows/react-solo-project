@@ -47,8 +47,8 @@ class AlbumContent extends Component {
                     {songs.length > 0 ? ( songs.slice(1).map((track, index) => (
                         <Card key={index} className="trackList" style={{width:"100vw", backgroundColor: "#262626", borderBottomColor: "#ff073a", borderTopColor: "#ff073a",color: "#ff073a", display: "inline-block"}}>
                             <ListGroup className="musicInfo" variant="flush">
-                                <ListGroup.Item songs={track.previewUrl} style={{backgroundColor: "#262626"}}>
-                                    <p>{index}</p>
+                                <ListGroup.Item songs={track.previewUrl} style={{backgroundColor: "#262626", display: "flex", alignItems: "baseline"}}>
+                                    {/* <p>{index}</p> */}
                                     <ToggleButtFxn key={index} songs={track.previewUrl} style={{color: "#ff073a", display: "inline-block"}} />
                                     <div style={{display: "inline-block", paddingLeft: "20px"}}>
                                         <b>{track.trackName}</b>
